@@ -1,0 +1,46 @@
+server:
+  port: 8001
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+spring:
+  application:
+    name : config
+#  profiles:
+#    active: native
+  cloud:
+    config:
+      server:
+        encrypt:
+          enabled: false
+        git:
+          uri: git@github.com:oksw2024/spring-cloud-pj-config.git
+          default-label: main
+          ignore-local-ssh-settings: true
+          strict-host-key-checking: false
+          host-key: AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBEmKSENjQEezOmxkZMy7opKgwFB9nkt5YRrYMjNuG5N87uRgg6CLrbo5wAdT/y6v0mKV0U2w0WZ2YB/++Tpockg=
+          host-key-algorithm: ecdsa-sha2-nistp256
+          private-key: |
+            -----BEGIN EC PRIVATE KEY-----
+            MHcCAQEEIIgjfkPaZjkVnAt13b2hgKX6O2/CYmq6YhbLH14LEWCKoAoGCCqGSM49
+            AwEHoUQDQgAED7STFeCceDwLjJYBm1SiO6sE94YJOkWj7vLTYUTxE1YqwQRPsFEx
+            MRptebmjEAJp82Prc93CPYFDmpWVZ1PelQ==
+            -----END EC PRIVATE KEY-----
+          passphrase: ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBA+0kxXgnHg8C4yWAZtUojurBPeGCTpFo+7y02FE8RNWKsEET7BRMTEabXm5oxACafNj63Pdwj2BQ5qVlWdT3pU= admin@205-
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    shutdown:
+      enabled: true
+
+encrypt:
+  key: my-secret
